@@ -18,8 +18,13 @@ public class Group {
 
     private String name;
 
-    @OneToMany(cascade = ALL)
+    @OneToMany(cascade = ALL, mappedBy = "group")
     private List<User> users;
+
+    // setter
+    public void setName(String name) {
+        this.name = name;
+    }
 
     // 연관관계 편의 메서드
     public void addUser(User user) {

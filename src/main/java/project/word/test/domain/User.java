@@ -40,4 +40,5 @@ public class User {
         this.age = age;
         this.accountType = accountType;
     }
+
 }

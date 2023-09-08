@@ -21,4 +21,23 @@ public class Word {
     
     @Enumerated(STRING)
     private Difficulty difficulty;
+
+    // setter
+    private void setForeign(String foreign) {
+        this.foreign = foreign;
+    }
+    private void setKorean(String korean) {
+        this.korean = korean;
+    }
+    private void setDifficulty(Difficulty difficulty) {this.difficulty = difficulty;}
+
+    public void changeWord(String foreign, String korean) {
+        setForeign(foreign);
+        setKorean(korean);
+    }
+    public void changeWord(String foreign, String korean,Difficulty difficulty) {
+        setForeign(foreign);
+        setKorean(korean);
+        setDifficulty(difficulty);
+    }
 }

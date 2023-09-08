@@ -16,16 +16,41 @@ public class Test {
     @GeneratedValue
     private Long id;
 
+    private String name;
     private int score;
     private LocalDateTime registrationTime;
-    private String name;
 
     @Enumerated(STRING)
     private TestStatus testStatus;
 
-    @OneToMany(cascade = ALL)
+    @OneToMany(cascade = ALL,mappedBy = "test")
     private List<TestUser> testUsers;
 
-    @OneToMany(cascade = ALL)
+    @OneToMany(cascade = ALL, mappedBy = "test")
     private List<TestWord> testWords;
+
+    // setter
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public void setRegistrationTime(LocalDateTime registrationTime) {
+        this.registrationTime = registrationTime;
+    }
+    public void setTestStatus(TestStatus testStatus) {
+        this.testStatus = testStatus;
+    }
+
+    // 연관관계 편의 메서드
+    public void addTestUser(TestUser testUser) {
+        testUser.setTest(this);
+        testUsers.add(testUser);
+    }
+
+    public void addTestWord(TestWord testWord) {
+        testWord.setTest(this);
+        testWords.add(testWord);
+    }
 }
