@@ -29,6 +29,4 @@ public class TestWord {
     public void setWord(Word word) {
         this.word = word;
     }
-
-
 }
