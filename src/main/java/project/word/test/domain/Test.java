@@ -23,7 +23,7 @@ public class Test {
     @Enumerated(STRING)
     private TestStatus testStatus;
 
-    @OneToMany(cascade = ALL,mappedBy = "test")
+    @OneToMany(cascade = ALL, mappedBy = "test")
     private List<TestUser> testUsers;
 
     @OneToMany(cascade = ALL, mappedBy = "test")
@@ -33,12 +33,15 @@ public class Test {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setScore(int score) {
         this.score = score;
     }
+
     public void setRegistrationTime(LocalDateTime registrationTime) {
         this.registrationTime = registrationTime;
     }
+
     public void setTestStatus(TestStatus testStatus) {
         this.testStatus = testStatus;
     }
