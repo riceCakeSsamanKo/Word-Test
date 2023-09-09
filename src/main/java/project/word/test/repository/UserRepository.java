@@ -1,11 +1,14 @@
 package project.word.test.repository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import project.word.test.domain.AccountType;
 import project.word.test.domain.Group;
 import project.word.test.domain.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +35,33 @@ public class UserRepository {
                 .setParameter("name", name)
                 .getResultList();
     }
+
+    public Optional<User> findByLogInInfo(String id, String password) {
+        try {
+            return Optional.ofNullable(em.createQuery("select u from User u join fetch u.group " +
+                            "where u.logInInformation.id = :id and u.logInInformation.password = :password", User.class)
+                    .setParameter("id", id)
+                    .setParameter("password", password)
+                    .getSingleResult());
+        } catch (NoResultException e){
+            return Optional.empty();
+        }
+    }
+    public List<User> findByAccountType(AccountType accountType) {
+        return em.createQuery("select u from User u " +
+                        "join fetch u.group g where u.accountType = :accountType", User.class)
+                .setParameter("accountType", accountType)
+                .getResultList();
+    }
+
     public List<User> findByGroup(Group group){
         return em.createQuery("select u from User u " +
                         "join fetch u.group g where g.id = :groupId", User.class)
                 .setParameter("groupId", group.getId())
                 .getResultList();
+    }
+
+    public void remove(User user){
+        em.remove(user);
     }
 }

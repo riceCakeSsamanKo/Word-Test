@@ -23,11 +23,17 @@ public class TestUser {
     @JoinColumn(name = "test_id")
     private Test test;
 
+    // 생성 메서드
+    public static TestUser createTestUser(User user){
+        TestUser testUser = new TestUser();
+        testUser.setUser(user);
+        return testUser;
+    }
+
     // setter
     public void setUser(User user) {
         this.user = user;
     }
-
     public void setTest(Test test) {
         this.test = test;
     }

@@ -3,6 +3,7 @@ package project.word.test.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import project.word.test.domain.Difficulty;
+import project.word.test.domain.User;
 import project.word.test.domain.Word;
 
 import javax.persistence.EntityManager;
@@ -14,19 +15,26 @@ public class WordRepository {
 
     private final EntityManager em;
 
-    public void save(Word word){
+    public void save(Word word) {
         em.persist(word);
     }
+
     public Word find(Long wordId) {
-        return em.find(Word.class,wordId);
+        return em.find(Word.class, wordId);
     }
-    public List<Word> findAll(){
+
+    public List<Word> findAll() {
         return em.createQuery("select w from Word w", Word.class)
                 .getResultList();
     }
+
     public List<Word> findByDifficulty(Difficulty difficulty) {
         return em.createQuery("select w from Word w where w.difficulty = :difficulty", Word.class)
                 .setParameter("difficulty", difficulty)
                 .getResultList();
+    }
+
+    public void remove(Word word){
+        em.remove(word);
     }
 }

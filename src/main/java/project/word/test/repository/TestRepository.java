@@ -3,6 +3,7 @@ package project.word.test.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import project.word.test.domain.Test;
+import project.word.test.domain.TestStatus;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -34,6 +35,11 @@ public class TestRepository {
         } catch (NoResultException e) {
             return Optional.empty();
         }
-
     }
+    public List<Test> findByStatus(TestStatus testStatus) {
+        return em.createQuery("select t from Test t where t.testStatus= :testStatus", Test.class)
+                .setParameter("testStatus", testStatus)
+                .getResultList();
+    }
+
 }

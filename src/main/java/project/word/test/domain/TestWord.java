@@ -22,6 +22,13 @@ public class TestWord {
     @JoinColumn(name = "word_id")
     private Word word;
 
+    // 생성 메서드
+    public static TestWord createTestWord(Word word){
+        TestWord testWord = new TestWord();
+        testWord.setWord(word);
+        return testWord;
+    }
+
     // setter
     public void setTest(Test test) {
         this.test = test;

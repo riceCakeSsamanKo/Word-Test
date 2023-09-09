@@ -11,9 +11,11 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "USERS")
 public class User {
 
     @Id @GeneratedValue
+    @Column(name = "user_id")
     private Long id;
 
     private String name;
@@ -21,6 +23,9 @@ public class User {
 
     @Enumerated(value = STRING)
     private AccountType accountType;
+
+    @Embedded
+    private LogInInformation logInInformation;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "group_id")
@@ -35,10 +40,13 @@ public class User {
     public void setGroup(Group group) {
         this.group = group;
     }
-    public void changeUserInfo(String name, int age, AccountType accountType) {
+    public void setAccountType(AccountType accountType){
+        this.accountType = accountType;
+    }
+    public void changeUserInfo(String name, int age, String password) {
         this.name = name;
         this.age = age;
-        this.accountType = accountType;
+        this.logInInformation.setPassword(password);
     }
 
 }

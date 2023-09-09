@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.*;
@@ -24,10 +25,10 @@ public class Test {
     private TestStatus testStatus;
 
     @OneToMany(cascade = ALL, mappedBy = "test")
-    private List<TestUser> testUsers;
+    private List<TestUser> testUsers = new ArrayList<>();
 
     @OneToMany(cascade = ALL, mappedBy = "test")
-    private List<TestWord> testWords;
+    private List<TestWord> testWords = new ArrayList<>();
 
     // setter
     public void setName(String name) {
