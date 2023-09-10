@@ -25,12 +25,11 @@ public class WordService {
         return wordRepository.find(wordId);
     }
     @Transactional(readOnly = true)
-    public List<Word> findWords(Difficulty difficulty) {
-        return wordRepository.findByDifficulty(difficulty);
-    }
-    @Transactional(readOnly = true)
     public List<Word> findWords() {
         return wordRepository.findAll();
     }
-
+    @Transactional(readOnly = true)
+    public List<Word> findWords(Difficulty difficulty) {
+        return wordRepository.findByDifficulty(difficulty);
+    }
 }
