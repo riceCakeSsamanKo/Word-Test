@@ -27,7 +27,8 @@ public class TestRepository {
     }
     public Optional<Test> findByName(String name) {
         try {
-            Test test = em.createQuery("select t from Test t where t.name = :name", Test.class)
+            Test test = em.createQuery("select t from Test t " +
+                            "where t.name = :name", Test.class)
                     .setParameter("name", name)
                     .getSingleResult();
 
@@ -37,7 +38,8 @@ public class TestRepository {
         }
     }
     public List<Test> findByStatus(TestStatus testStatus) {
-        return em.createQuery("select t from Test t where t.testStatus= :testStatus", Test.class)
+        return em.createQuery("select t from Test t " +
+                        "where t.testStatus= :testStatus", Test.class)
                 .setParameter("testStatus", testStatus)
                 .getResultList();
     }

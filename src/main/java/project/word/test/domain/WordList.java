@@ -1,6 +1,5 @@
 package project.word.test.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,8 +17,7 @@ import static lombok.AccessLevel.*;
 @Getter @Setter
 @NoArgsConstructor(access = PROTECTED)
 public class WordList {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "word_list_id")
     private Long id;
 

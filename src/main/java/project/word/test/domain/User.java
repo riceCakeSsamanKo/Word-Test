@@ -27,17 +27,17 @@ public class User {
     private AccountType accountType;
 
     @Embedded
-    private LogInInformation logInInformation;
+    private LogInInformation logIn;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
 
-    public User(String name, int age, AccountType accountType,LogInInformation logInInformation) {
+    public User(String name, int age, AccountType accountType,LogInInformation logIn) {
         this.name = name;
         this.age = age;
         this.accountType = accountType;
-        this.logInInformation = logInInformation;
+        this.logIn = logIn;
     }
 
     // setGroup은 외부에서 막쓰면 안된다. (groupRepository에서의 remove() 사용을 위해 구현)
@@ -50,7 +50,7 @@ public class User {
     public void changeUserInfo(String name, int age, String password) {
         this.name = name;
         this.age = age;
-        this.logInInformation.setPassword(password);
+        this.logIn.setPassword(password);
     }
 
 }

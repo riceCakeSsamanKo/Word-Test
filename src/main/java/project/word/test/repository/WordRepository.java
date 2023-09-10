@@ -24,12 +24,15 @@ public class WordRepository {
     }
 
     public List<Word> findAll() {
-        return em.createQuery("select w from Word w", Word.class)
+        return em.createQuery("select w from Word w " +
+                        "join fetch w.wordList", Word.class)
                 .getResultList();
     }
 
     public List<Word> findByDifficulty(Difficulty difficulty) {
-        return em.createQuery("select w from Word w where w.difficulty = :difficulty", Word.class)
+        return em.createQuery("select w from Word w " +
+                        "join fetch w.wordList " +
+                        "where w.difficulty = :difficulty", Word.class)
                 .setParameter("difficulty", difficulty)
                 .getResultList();
     }

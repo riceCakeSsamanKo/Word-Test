@@ -38,8 +38,9 @@ public class UserRepository {
 
     public Optional<User> findByLogInInfo(String id, String password) {
         try {
-            return Optional.ofNullable(em.createQuery("select u from User u join fetch u.group " +
-                            "where u.logInInformation.id = :id and u.logInInformation.password = :password", User.class)
+            return Optional.ofNullable(em.createQuery("select u from User u " +
+                            "join fetch u.group " +
+                            "where u.logIn.id = :id and u.logIn.password = :password", User.class)
                     .setParameter("id", id)
                     .setParameter("password", password)
                     .getSingleResult());
