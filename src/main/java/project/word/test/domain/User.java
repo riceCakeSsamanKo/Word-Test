@@ -1,5 +1,6 @@
 package project.word.test.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -7,10 +8,11 @@ import javax.persistence.*;
 
 import static javax.persistence.EnumType.*;
 import static javax.persistence.FetchType.*;
+import static lombok.AccessLevel.*;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = PROTECTED)
 @Table(name = "USERS")
 public class User {
 
@@ -31,12 +33,14 @@ public class User {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    public User(String name, int age, AccountType accountType) {
+    public User(String name, int age, AccountType accountType,LogInInformation logInInformation) {
         this.name = name;
         this.age = age;
         this.accountType = accountType;
+        this.logInInformation = logInInformation;
     }
 
+    // setGroup은 외부에서 막쓰면 안된다. (groupRepository에서의 remove() 사용을 위해 구현)
     public void setGroup(Group group) {
         this.group = group;
     }

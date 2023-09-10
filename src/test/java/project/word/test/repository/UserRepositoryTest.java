@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import project.word.test.domain.AccountType;
+import project.word.test.domain.LogInInformation;
 import project.word.test.domain.User;
 import project.word.test.service.UserService;
 
@@ -23,9 +24,10 @@ class UserRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
-    User user1 = new User("유저1", 50, STUDENT);
-    User user2 = new User("유저2", 30, STUDENT);
-    User user3 = new User("유저3", 20, ADMIN);
+    LogInInformation login = new LogInInformation("abc", "pw");
+    User user1 = new User("유저1", 50, STUDENT, login);
+    User user2 = new User("유저2", 30, STUDENT, login);
+    User user3 = new User("유저3", 20, ADMIN, login);
 
     @BeforeEach
     public void each() {

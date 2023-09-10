@@ -17,19 +17,19 @@ public class WordService {
 
     private final WordRepository wordRepository;
 
-    public void join(Word word){
+    public void addWord(Word word){
         wordRepository.save(word);
     }
     @Transactional(readOnly = true)
-    public Word findword(Long wordId) {
+    public Word findWord(Long wordId) {
         return wordRepository.find(wordId);
     }
     @Transactional(readOnly = true)
-    public List<Word> findwords(Difficulty difficulty) {
+    public List<Word> findWords(Difficulty difficulty) {
         return wordRepository.findByDifficulty(difficulty);
     }
     @Transactional(readOnly = true)
-    public List<Word> findwords() {
+    public List<Word> findWords() {
         return wordRepository.findAll();
     }
 

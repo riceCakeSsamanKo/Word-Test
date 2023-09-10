@@ -1,15 +1,19 @@
 package project.word.test.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 import static javax.persistence.FetchType.*;
+import static lombok.AccessLevel.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = PROTECTED)
 public class TestUser {
     @Id
     @GeneratedValue

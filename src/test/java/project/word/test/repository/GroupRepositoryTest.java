@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import project.word.test.domain.AccountType;
 import project.word.test.domain.Group;
+import project.word.test.domain.LogInInformation;
 import project.word.test.domain.User;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,18 +19,18 @@ class GroupRepositoryTest {
     GroupRepository groupRepository;
 
     @Test
-    public void remove(){
+    public void remove() {
 
         Group group = new Group("group");
-
-        User user1 = new User("유저1", 1, STUDENT);
-        User user2 = new User("유저2", 2, STUDENT);
-        User user3 = new User("유저3", 3, STUDENT);
+        LogInInformation login = new LogInInformation("abc", "pw");
+        User user1 = new User("유저1", 1, STUDENT, login);
+        User user2 = new User("유저2", 2, STUDENT, login);
+        User user3 = new User("유저3", 3, STUDENT, login);
 
         group.addUser(user1);
         group.addUser(user2);
         group.addUser(user3);
-        System.out.println("name="+user1.getGroup().getName());
+        System.out.println("name=" + user1.getGroup().getName());
 
         groupRepository.save(group);
 
