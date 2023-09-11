@@ -9,6 +9,7 @@ import java.util.List;
 
 import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.*;
+import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter
@@ -27,8 +28,9 @@ public class Test {
     @OneToMany(cascade = ALL, mappedBy = "test")
     private List<TestUser> testUsers = new ArrayList<>();
 
-    @OneToMany(cascade = ALL, mappedBy = "test")
-    private List<TestWord> testWords = new ArrayList<>();
+    @OneToOne(fetch = LAZY, cascade = ALL)
+    @JoinColumn(name = "word_list_id")
+    private WordList wordList;
 
     // setter
     public void setName(String name) {
@@ -53,8 +55,7 @@ public class Test {
         testUsers.add(testUser);
     }
 
-    public void addTestWord(TestWord testWord) {
-        testWord.setTest(this);
-        testWords.add(testWord);
+    public void addWordList(WordList wordList) {
+        this.wordList = wordList;
     }
 }

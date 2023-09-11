@@ -21,10 +21,6 @@ public class WordList {
     @Column(name = "word_list_id")
     private Long id;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "test_id")
-    private Test test;
-
     @OneToMany(cascade = ALL, mappedBy = "wordList")
     private List<Word> words = new ArrayList<>();
 
@@ -38,10 +34,6 @@ public class WordList {
         return wordList;
     }
 
-    // setter
-    public void setTest(Test test) {
-        this.test = test;
-    }
 
     // 연관 관계 편의 메서드
     public void addWord(Word word) {
