@@ -13,15 +13,16 @@ import static lombok.AccessLevel.*;
 @NoArgsConstructor(access = PROTECTED)
 @Getter
 public class LogInInformation {
-    private String id;
-    private String password;
+    private String login_id;
+    private String login_password;
 
     public LogInInformation(String id, String password){
-        this.id = id;
-        this.password = password;
+        this.login_id = id;
+        this.login_password = password;
     }
 
     public void setPassword(String password){
-        this.password = password;
+        this.login_password = password;
     }
 }
+

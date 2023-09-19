@@ -11,7 +11,6 @@ import project.word.test.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -38,3 +37,4 @@ public class GroupService {
         return groupRepository.findAll();
     }
 }
+

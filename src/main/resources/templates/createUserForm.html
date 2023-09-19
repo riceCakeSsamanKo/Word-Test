@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>WORD TEST</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form role="form" action="/new" th:object="${form}" method="post" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label th:for="name">ID</label>
+            <input type="text" th:field="*{login_id}" class="form-control"
+                   placeholder="아이디를 입력하세요"
+                   th:class="${#fields.hasErrors('login_id')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('login_id')}" th:errors="*{login_id}">잘못된 아이디</p>
+
+            <label th:for="name">PASSWORD</label>
+            <input type="text" th:field="*{login_pw}" class="form-control"
+                   placeholder="비밀번호를 입력하세요"
+                   th:class="${#fields.hasErrors('login_pw')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('login_pw')}" th:errors="*{login_pw}">잘못된 비밀번호</p>
+
+            <label th:for="name">이름</label>
+            <input type="text" th:field="*{name}" class="form-control"
+                   placeholder="이름을 입력하세요"
+                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">잘못된 이름</p>
+
+            <label th:for="name">나이</label>
+            <input type="text" th:field="*{age}" class="form-control"
+                   placeholder="나이를 입력하세요"
+                   th:class="${#fields.hasErrors('age')}? 'form-control fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">잘못된 나이</p>
+
+            <label th:for="name">그룹선택</label>
+            <select class="form-control" id="group" th:field="*{groupId}">
+                <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
+            </select>
+        <div>
+        <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

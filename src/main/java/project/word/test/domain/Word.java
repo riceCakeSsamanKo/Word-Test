@@ -15,13 +15,12 @@ import static lombok.AccessLevel.*;
 @NoArgsConstructor(access = PROTECTED)
 public class Word {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
-    private String foreign;
     private String korean;
-    
+    private String english;
+
     @Enumerated(STRING)
     private Difficulty difficulty;
 
@@ -29,14 +28,15 @@ public class Word {
     @JoinColumn(name = "word_list_id")
     private WordList wordList;
 
-    public Word(String foreign, String korean, Difficulty difficulty) {
-        setForeign(foreign);
+    public Word(String english, String korean, Difficulty difficulty) {
+        setEnglish(english);
         setKorean(korean);
         setDifficulty(difficulty);
     }
+
     // setter
-    private void setForeign(String foreign) {
-        this.foreign = foreign;
+    private void setEnglish(String english) {
+        this.english = english;
     }
     private void setKorean(String korean) {
         this.korean = korean;
@@ -46,12 +46,12 @@ public class Word {
         this.wordList = wordList;
     } // default 선언
 
-    public void changeWord(String foreign, String korean) {
-        setForeign(foreign);
+    public void changeWord(String english, String korean) {
+        setEnglish(english);
         setKorean(korean);
     }
-    public void changeWord(String foreign, String korean,Difficulty difficulty) {
-        setForeign(foreign);
+    public void changeWord(String english, String korean,Difficulty difficulty) {
+        setEnglish(english);
         setKorean(korean);
         setDifficulty(difficulty);
     }

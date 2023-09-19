@@ -15,6 +15,7 @@ import static lombok.AccessLevel.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = PROTECTED)
+@Table(name = "GROUPS")
 public class Group {
 
     @Id @GeneratedValue
