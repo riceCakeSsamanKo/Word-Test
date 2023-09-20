@@ -21,14 +21,17 @@ public class UserRepository {
     public void save(User user) {
         em.persist(user);
     }
+
     public User find(Long userId) {
         return em.find(User.class, userId);
     }
+
     public List<User> findAll() {
         return em.createQuery("select u from User u " +
-                "join fetch u.group", User.class)
+                        "join fetch u.group", User.class)
                 .getResultList();
     }
+
     public List<User> findByName(String name) {
         return em.createQuery("select u from User u " +
                         "join fetch u.group where u.name = :name", User.class)
@@ -36,18 +39,31 @@ public class UserRepository {
                 .getResultList();
     }
 
+    public Optional<User> findByLogInId(String login_id) {
+        try {
+            return Optional.ofNullable(em.createQuery("select u from User u " +
+                            "join fetch u.group " +
+                            "where u.logIn.login_id = :login_id", User.class)
+                    .setParameter("login_id", login_id)
+                    .getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
     public Optional<User> findByLogInInfo(String id, String password) {
         try {
             return Optional.ofNullable(em.createQuery("select u from User u " +
                             "join fetch u.group " +
-                            "where u.logIn.id = :id and u.logIn.password = :password", User.class)
+                            "where u.logIn.login_id = :id and u.logIn.login_password = :password", User.class)
                     .setParameter("id", id)
                     .setParameter("password", password)
                     .getSingleResult());
-        } catch (NoResultException e){
+        } catch (NoResultException e) {
             return Optional.empty();
         }
     }
+
     public List<User> findByAccountType(AccountType accountType) {
         return em.createQuery("select u from User u " +
                         "join fetch u.group g where u.accountType = :accountType", User.class)
@@ -55,14 +71,14 @@ public class UserRepository {
                 .getResultList();
     }
 
-    public List<User> findByGroup(Group group){
+    public List<User> findByGroup(Group group) {
         return em.createQuery("select u from User u " +
                         "join fetch u.group g where g.id = :groupId", User.class)
                 .setParameter("groupId", group.getId())
                 .getResultList();
     }
 
-    public void remove(User user){
+    public void remove(User user) {
         em.remove(user);
     }
 }

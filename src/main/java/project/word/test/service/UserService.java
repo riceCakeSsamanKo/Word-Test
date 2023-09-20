@@ -27,6 +27,10 @@ public class UserService {
     public User findUser(Long userId) {
         return userRepository.find(userId);
     }
+    @Transactional(readOnly = true)
+    public Optional<User> findUserByLoginId(String login_Id) {
+        return userRepository.findByLogInId(login_Id);
+    }
 
     @Transactional(readOnly = true)
     public Optional<User> findUser(String id, String password) {
