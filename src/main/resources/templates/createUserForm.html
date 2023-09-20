@@ -28,7 +28,7 @@
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">잘못된 이름</p>
 
             <label th:for="name">나이</label>
-            <input type="text" th:field="*{age}" class="form-control"
+            <input type="number" th:field="*{age}" class="form-control"
                    placeholder="나이를 입력하세요"
                    th:class="${#fields.hasErrors('age')}? 'form-control fieldError' : 'form-control'">
             <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}">잘못된 나이</p>
@@ -37,7 +37,9 @@
             <select class="form-control" id="group" th:field="*{groupId}">
                 <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
             </select>
+            <button type="submit" class="btn btn-primary">회원 가입</button>
         <div>
+            <a href="/" class="btn btn-primary" style="float: right;">돌아가기</a>
         <div th:replace="fragments/footer :: footer"/>
 </div> <!-- /container -->
 </body>
