@@ -14,6 +14,8 @@
                    placeholder="아이디를 입력하세요"
                    th:class="${#fields.hasErrors('login_id')}? 'form-control fieldError' : 'form-control'">
             <p th:if="${#fields.hasErrors('login_id')}" th:errors="*{login_id}">잘못된 아이디</p>
+            <small class="text-danger" th:if="${#fields.hasErrors('login_id')}" th:errors="*{login_id}">ID는 필수
+                입력값입니다</small>
             <p th:if="${isAlreadyExist}" class="text-danger">이미 가입된 아이디입니다</p>
 
             <label th:for="name">PASSWORD</label>
@@ -38,10 +40,11 @@
             <select class="form-control" id="group" th:field="*{groupId}">
                 <option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}"></option>
             </select>
+            <p th:if="${isBlankedValueExist}" class="text-danger">모든 값을 입력해주세요</p>
             <button type="submit" class="btn btn-primary">회원 가입</button>
-        <div>
-            <a href="/static" class="btn btn-primary" style="float: right;">돌아가기</a>
-        <div th:replace="fragments/footer :: footer"/>
-</div> <!-- /container -->
+            <div>
+                <a href="/static" class="btn btn-primary" style="float: right;">돌아가기</a>
+                <div th:replace="fragments/footer :: footer"/>
+            </div> <!-- /container -->
 </body>
 </html>

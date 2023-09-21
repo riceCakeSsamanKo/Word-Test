@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import project.word.test.domain.AccountType;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -20,7 +21,6 @@ public class UserForm {
     // user field
     @NotEmpty(message = "이름은 필수입니다")
     private String name;
-    @NotEmpty(message = "나이는 필수입니다")
     private int age;
 
     //group

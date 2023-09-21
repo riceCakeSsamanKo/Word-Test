@@ -39,14 +39,22 @@ public class UserContoller {
     }
 
     @PostMapping("/new")
-    public String createUser(@Valid UserForm form, Model model, BindingResult result) {
+    public String createUser(UserForm form, Model model) {
+        // 조회한 그룹
+        List<Group> groups = groupService.findGroups();
+
+        // 입력되지 않은 값이 있는지 체크
+        if (form.getName().isEmpty() || form.getLogin_id().isEmpty() || form.getLogin_pw().isEmpty()) {
+            model.addAttribute("form", new UserForm());
+            model.addAttribute("groups", groups);
+            model.addAttribute("isBlankedValueExist", true);
+
+            return "main/createUserForm";
+        }
         // 동일한 아이디로 회원 가입 된 유저인 경우, 가입 불가
         Optional<User> findUser = userService.findUserByLoginId(form.getLogin_id());
         if (findUser.isPresent()) {
-            result.rejectValue("login_id", "invalid", "Login id already exists");
-
             model.addAttribute("form", new UserForm());
-            List<Group> groups = groupService.findGroups();
             model.addAttribute("groups", groups);
             model.addAttribute("isAlreadyExist", true);
 
