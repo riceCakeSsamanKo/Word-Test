@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,9 @@ import project.word.test.service.GroupService;
 import project.word.test.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 import static project.word.test.domain.AccountType.*;
 
@@ -36,18 +39,24 @@ public class UserContoller {
     }
 
     @PostMapping("/new")
-    public String createUser(UserForm form, Model model) {
-        // 동일한 아이디로 회원가입된 유저인지 조회
-        if (userService.findUserByLoginId(form.getLogin_id()).isPresent()) {
-            System.out.println("bool: " + userService.findUserByLoginId(form.getLogin_id()).isPresent());
+    public String createUser(@Valid UserForm form, Model model, BindingResult result) {
+        // 동일한 아이디로 회원 가입 된 유저인 경우, 가입 불가
+        Optional<User> findUser = userService.findUserByLoginId(form.getLogin_id());
+        if (findUser.isPresent()) {
+            result.rejectValue("login_id", "invalid", "Login id already exists");
 
             model.addAttribute("form", new UserForm());
             List<Group> groups = groupService.findGroups();
             model.addAttribute("groups", groups);
             model.addAttribute("isAlreadyExist", true);
-            return "main/loginPage";
+
+            return "main/createUserForm";
         }
+
         User user = new User(form.getName(), form.getAge(), form.getLogin_id(), form.getLogin_pw());
+        Group group = groupService.findGroup(form.getGroupId());
+        group.addUser(user);
+
         userService.join(user);
 
         return "redirect:/";
