@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import project.word.test.domain.Group;
 import project.word.test.domain.User;
 import project.word.test.dto.UserForm;
+import project.word.test.dto.UserLogInDto;
 import project.word.test.service.GroupService;
 import project.word.test.service.UserService;
 
@@ -35,6 +36,7 @@ public class UserContoller {
         List<Group> groups = groupService.findGroups();
         model.addAttribute("groups", groups);
 
+        log.info("join membership");
         return "main/createUserForm";
     }
 
@@ -72,24 +74,32 @@ public class UserContoller {
 
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("form", new UserForm());
+        model.addAttribute("form", new UserLogInDto());
         return "main/loginPage";
     }
 
     @PostMapping("/login")
-    public String login(Model model, UserForm userForm, HttpSession session) {
-        User loggedInUser = userService.findUser(userForm.getId());
-        if (loggedInUser != null) {
-            session.setAttribute("loggedInUser", loggedInUser);
-            model.addAttribute("loggedIn", true);
-            if (loggedInUser.getAccountType() == ADMIN) {
-                model.addAttribute("isAdmin", true);
-            }
-            return "main/home";
-        } else {
-            // 없는 아이디이거나 비밀번호입니다 경고 발생
-            model.addAttribute("noMemberExist", true);
+    public String login(Model model, UserLogInDto logInDto, HttpSession session, BindingResult bindingResult) {
+        // id와 pw로 로그인한 유저 조회
+        Optional<User> loggedInUserFindById =
+                userService.findUser(logInDto.getLogin_id(), logInDto.getLogin_pw());
+
+        boolean noMemberExist = loggedInUserFindById.isEmpty();
+        // 해당 id와 pw로 가입된 유저가 없는 경우
+
+        if(logInDto.getLogin_id().isEmpty() || logInDto.getLogin_pw().isEmpty()) {
+            model.addAttribute("form", new UserLogInDto());
+            model.addAttribute("isBlankedValueExist", true);
             return "main/loginPage";
+        } else if (noMemberExist) {
+            model.addAttribute("form", new UserLogInDto());
+            model.addAttribute("noMemberExist", true);
+            // 경고 발생과 함께 다시 로그인 페이지로 리다이렉트
+            return "main/loginPage";
+        } else{ // 가입된 유저가 존재하는 경우
+            User loggedInUser = loggedInUserFindById.get();
+            session.setAttribute("loggedInUser",loggedInUser);  // 로그인한 유저 정보 저장
+            return "redirect:/";
         }
     }
 

@@ -11,6 +11,7 @@ import project.word.test.service.GroupService;
 import project.word.test.service.UserService;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
 
 import static project.word.test.domain.AccountType.*;
 
@@ -22,18 +23,16 @@ public class InitDb {
 
     @PostConstruct  // 빈으로 등록될 시 자동으로 실행됨
     public void init() {
-        initService.userInit();
+//        initService.userInit();
         initService.groupInit();
     }
 
     @Component
-    @Transactional
     @RequiredArgsConstructor
     static class InitService {
 
         private final UserService userService;
         private final GroupService groupService;
-
         void userInit() {
 
             User user1 = new User("user1", 30, "1", "1");
@@ -47,6 +46,7 @@ public class InitDb {
             userService.join(user3);
             userService.join(admin1);
         }
+
 
         void groupInit() {
 
