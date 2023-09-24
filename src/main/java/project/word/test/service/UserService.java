@@ -57,6 +57,10 @@ public class UserService {
         return userRepository.findByAccountType(accountType);
     }
 
+    public void delete(User user){
+        userRepository.remove(user);
+    }
+
     // 업데이트 로직
     public void updateUser(Long userId, String password, String name, int age) {
 

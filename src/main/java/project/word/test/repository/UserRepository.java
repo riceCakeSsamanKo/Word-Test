@@ -28,13 +28,13 @@ public class UserRepository {
 
     public List<User> findAll() {
         return em.createQuery("select u from User u " +
-                        "join fetch u.group", User.class)
+                        "left join fetch u.group", User.class)
                 .getResultList();
     }
 
     public List<User> findByName(String name) {
         return em.createQuery("select u from User u " +
-                        "join fetch u.group where u.name = :name", User.class)
+                        "left join fetch u.group where u.name = :name", User.class)
                 .setParameter("name", name)
                 .getResultList();
     }
@@ -42,7 +42,7 @@ public class UserRepository {
     public Optional<User> findByLogInId(String login_id) {
         try {
             return Optional.ofNullable(em.createQuery("select u from User u " +
-                            "join fetch u.group " +
+                            "left join fetch u.group " +
                             "where u.logIn.login_id = :login_id", User.class)
                     .setParameter("login_id", login_id)
                     .getSingleResult());
@@ -54,7 +54,7 @@ public class UserRepository {
     public Optional<User> findByLogInInfo(String id, String password) {
         try {
             return Optional.ofNullable(em.createQuery("select u from User u " +
-                            "join fetch u.group " +
+                            "left join fetch u.group " +
                             "where u.logIn.login_id = :id and u.logIn.login_password = :password", User.class)
                     .setParameter("id", id)
                     .setParameter("password", password)

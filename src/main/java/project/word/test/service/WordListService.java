@@ -36,9 +36,4 @@ public class WordListService {
     public List<WordList> findWordLists(Word word) {
         return wordListRepository.findByWord(word);
     }
-
-    @Transactional(readOnly = true)
-    public List<WordList> findWordLists(Test test) {
-        return wordListRepository.findByTest(test);
-    }
 }

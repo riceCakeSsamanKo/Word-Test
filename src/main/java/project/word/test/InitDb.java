@@ -23,7 +23,7 @@ public class InitDb {
 
     @PostConstruct  // 빈으로 등록될 시 자동으로 실행됨
     public void init() {
-//        initService.userInit();
+        initService.userInit();
         initService.groupInit();
     }
 

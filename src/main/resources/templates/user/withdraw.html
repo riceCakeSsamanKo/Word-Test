@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>WORD TEST</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="jumbotron">
+        <h1>WORD TEST</h1>
+        <section class="content">
+            <h2>정말로 탈퇴하시겠습니까?</h2>
+            <p>회원 탈퇴를 하시려면 아래 버튼을 클릭하세요.</p>
+            <form action="/user/withdraw" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button type="submit" class="btn btn-danger">회원 탈퇴</button>
+            </form>
+        </section>
+    </div>
+    <a href="/user" class="btn btn-primary" style="float: right;">돌아가기</a>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>
