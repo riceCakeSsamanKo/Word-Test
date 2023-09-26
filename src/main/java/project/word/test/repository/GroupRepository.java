@@ -47,4 +47,8 @@ public class GroupRepository {
         }
         em.remove(group);
     }
+
+    public void removeUser(Group group, User user) {
+        group.deleteUser(user);
+    }
 }

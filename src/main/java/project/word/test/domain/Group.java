@@ -40,4 +40,8 @@ public class Group {
         users.add(user);
         user.setGroup(this);
     }
+
+    public void deleteUser(User user) {
+        users.remove(user);
+    }
 }

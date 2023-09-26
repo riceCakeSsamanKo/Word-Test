@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import project.word.test.domain.Group;
 import project.word.test.domain.User;
+import project.word.test.dto.UserEditDto;
 import project.word.test.dto.UserForm;
 import project.word.test.service.GroupService;
 import project.word.test.service.UserService;
@@ -46,14 +48,31 @@ public class UserController {
     public String editUserInfo(HttpSession session, Model model) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         model.addAttribute("user", loggedInUser);
-        model.addAttribute("form", new UserForm());
+        model.addAttribute("form", new UserEditDto());
         log.info("USER EDIT");
 
-        return "user/infofasd";
+        return "user/edit";
     }
 
+    @PostMapping("/user/edit")
+    public String editUserInfoPost(HttpSession session,UserEditDto dto) {
+        Long id = ((User) session.getAttribute("loggedInUser")).getId();
+        User user = userService.findUser(id);
+        Group group = groupService.findGroup(user.getGroup().getId());
+
+        // group의 users 리스트에서 user 제거
+        groupService.deleteUser(group,user);
+
+        Group newGroup = groupService.findGroup(dto.getGroup_id());
+        newGroup.addUser(user); //user의 group에 대한 연관관계 변경
+
+        userService.updateUser(id,dto.getLogin_pw(),dto.getName(),dto.getAge());
+
+        return "user/info";
+    }
     @RequestMapping("/user/withdraw")
-    public String userWithDraw(){
+    public String userWithDraw() {
+
         log.info("USER WITHDRAW");
 
         return "user/withdraw";

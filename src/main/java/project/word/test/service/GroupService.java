@@ -36,5 +36,9 @@ public class GroupService {
     public List<Group> findGroups() {
         return groupRepository.findAll();
     }
+
+    public void deleteUser(Group group,User user) {
+        groupRepository.removeUser(group,user);
+    }
 }
 
