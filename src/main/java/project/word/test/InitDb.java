@@ -25,6 +25,7 @@ public class InitDb {
     public void init() {
         initService.userInit();
         initService.groupInit();
+        initService.userGroupJoinInit();
     }
 
     @Component
@@ -57,6 +58,20 @@ public class InitDb {
             groupService.join(group1);
             groupService.join(group2);
             groupService.join(group3);
+        }
+
+        void userGroupJoinInit() {
+            User userA = new User("userA",20,"11","11");
+            User userB = new User("userB",20,"22","22");
+
+            Group groupA = new Group("groupA");
+            Group groupB = new Group("groupB");
+
+            groupA.addUser(userA);
+            groupB.addUser(userB);
+
+            groupService.join(groupA);
+            groupService.join(groupB);
         }
     }
 }

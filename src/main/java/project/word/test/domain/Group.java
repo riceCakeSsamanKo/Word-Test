@@ -41,7 +41,7 @@ public class Group {
         user.setGroup(this);
     }
 
-    public void deleteUser(User user) {
+    public void removeUser(User user) {
         users.remove(user);
     }
 }

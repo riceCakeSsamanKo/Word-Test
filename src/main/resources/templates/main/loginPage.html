@@ -9,7 +9,7 @@
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <form role="form" action="/login" th:object="${form}" method="post" onsubmit="return validateForm()">
         <div class="form-group">
-            <label th:for="name">ID</label>
+            <label th:for="login_id">ID</label>
             <input type="text" th:field="*{login_id}" class="form-control"
                    placeholder="아이디를 입력하세요"
                    th:class="${#fields.hasErrors('login_id')}? 'form-control fieldError' : 'form-control'">
@@ -17,7 +17,7 @@
             <small class="text-danger" th:if="${#fields.hasErrors('login_id')}" th:errors="*{login_id}">ID는 필수
                 입력값입니다</small>
 
-            <label th:for="name">PASSWORD</label>
+            <label th:for="login_pw">PASSWORD</label>
             <input type="password" th:field="*{login_pw}" class="form-control"
                    placeholder="비밀번호를 입력하세요"
                    th:class="${#fields.hasErrors('login_pw')}? 'form-control fieldError' : 'form-control'">

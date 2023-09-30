@@ -49,6 +49,6 @@ public class GroupRepository {
     }
 
     public void removeUser(Group group, User user) {
-        group.deleteUser(user);
+        group.removeUser(user);
     }
 }

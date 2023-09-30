@@ -13,23 +13,24 @@ import static lombok.AccessLevel.*;
 @Entity
 @Getter @Setter(value = PROTECTED)
 @NoArgsConstructor(access = PROTECTED)
-public class TestUser {
+public class TestGroup {
+
     @Id
     @GeneratedValue
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "test_id")
     private Test test;
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
+
     // 생성 메서드
-    public static TestUser createTestUser(User user){
-        TestUser testUser = new TestUser();
-        testUser.setUser(user);
-        return testUser;
+    public static TestGroup createTestGroup(Group group){
+        TestGroup testGroup = new TestGroup();
+        testGroup.setGroup(group);
+        return testGroup;
     }
 }
