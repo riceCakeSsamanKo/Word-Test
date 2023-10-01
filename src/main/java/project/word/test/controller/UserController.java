@@ -17,6 +17,7 @@ import project.word.test.service.UserService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,43 +37,51 @@ public class UserController {
     }
 
     @RequestMapping("/user/info")
-    public String userInformation(HttpSession session,Model model) {
+    public String userInformation(HttpSession session, Model model) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
-        model.addAttribute("user",loggedInUser);
+        User user = userService.findUser(loggedInUser.getId());
+        model.addAttribute("user", user);
         log.info("USER INFORMATION");
 
         return "user/info";
     }
 
-    // 09-24 edit는 아직 미구현
-    @GetMapping("/user/edit")
+    @GetMapping("/user/info/edit")
     public String editUserInfo(HttpSession session, Model model) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         List<Group> groups = groupService.findGroups();
         model.addAttribute("user", loggedInUser);
         model.addAttribute("groups", groups);
         model.addAttribute("form", new UserEditDto());
+        model.addAttribute("groups", groupService.findGroups());
         log.info("USER EDIT");
 
         return "user/edit";
     }
 
-    @PostMapping("/user/edit")
-    public String editUserInfoPost(HttpSession session,UserEditDto dto) {
+    @PostMapping("/user/info/edit")
+    public String editUserInfoPost(HttpSession session, UserEditDto dto) {
         Long id = ((User) session.getAttribute("loggedInUser")).getId();
         User user = userService.findUser(id);
-        Group group = groupService.findGroup(user.getGroup().getId());
+        // 기존 유저의 그룹
+        Group group = groupService.findGroup(user.getGroup().getId());  // group이 null인 경우 처리 필요(NullPointerException 발생)
 
-        // group의 users 리스트에서 user 제거
-        groupService.deleteUser(group,user);
-
+        // dto로 받아온 그룹
         Group newGroup = groupService.findGroup(dto.getGroup_id());
+        // group의 users 리스트에서 user 제거
+        groupService.deleteUser(group, user);
         newGroup.addUser(user); //user의 group에 대한 연관관계 변경
 
-        userService.updateUser(id,dto.getLogin_pw(),dto.getName(),dto.getAge());
+        // 입력이 된 값만 변경함. 입력되지 않은 값의 경우 기존의 값을 유지함(문자열 비교는 equals 메서드를 이용해야 한다.)
+        String newPassword = (!Objects.equals(dto.getLogin_pw(), "")) ? dto.getLogin_pw() : user.getLogIn().getLogin_password();
+        String newName = (!Objects.equals(dto.getName(), "")) ? dto.getName() : user.getName();
+        int newAge = (dto.getAge() != 0) ? dto.getAge() : user.getAge();
 
-        return "user/info";
+        userService.updateUser(id, newPassword, newName, newAge);
+
+        return "redirect:/user/info";
     }
+
     @RequestMapping("/user/withdraw")
     public String userWithDraw() {
 
@@ -82,7 +91,7 @@ public class UserController {
     }
 
     @DeleteMapping("/user/withdraw")
-    public String userWithDraw(HttpSession session){
+    public String userWithDraw(HttpSession session) {
 
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         User user = userService.findUser(loggedInUser.getId());

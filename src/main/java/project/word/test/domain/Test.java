@@ -28,6 +28,9 @@ public class Test {
     @OneToMany(cascade = ALL, mappedBy = "test")
     private List<TestUser> testUsers = new ArrayList<>();
 
+    @OneToMany(cascade = ALL, mappedBy = "test")
+    private List<TestGroup> testGroups = new ArrayList<>();
+
     @OneToOne(fetch = LAZY, cascade = ALL)
     @JoinColumn(name = "word_list_id")
     private WordList wordList;
@@ -53,6 +56,10 @@ public class Test {
     public void addTestUser(TestUser testUser) {
         testUser.setTest(this);
         testUsers.add(testUser);
+    }
+    public void addTestGroup(TestGroup testGroup) {
+        testGroup.setTest(this);
+        testGroups.add(testGroup);
     }
 
     public void addWordList(WordList wordList) {

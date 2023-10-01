@@ -11,9 +11,10 @@
         <p><strong th:text="'Name: '"></strong> <span th:text="${user.name}"></span></p>
         <p><strong th:text="'age: '"></strong> <span th:text="${user.age}"></span></p>
         <p><strong th:text="'account type: '"></strong> <span th:text="${user.accountType}"></span></p>
-        <p th:if="${user.group != null}"><strong th:text="'group: '"></strong> <span th:text="${user.group}"></span></p>
+        <p th:if="${user.group != null}"><strong th:text="'group: '"></strong> <span th:text="${user.group.name}"></span></p>
         <p th:if="${user.group == null}"><strong th:text="'group: '"></strong> <span>None</span></p>
         <div>
+            <a href="/user/info/edit" class="btn btn-primary">수정하기</a>
             <a href="/user" class="btn btn-primary" style="float: right;">돌아가기</a>
             <div th:replace="fragments/footer :: footer"/>
         </div> <!-- /container -->

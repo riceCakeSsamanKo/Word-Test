@@ -22,10 +22,9 @@ class GroupRepositoryTest {
     public void remove() {
 
         Group group = new Group("group");
-        LogInInformation login = new LogInInformation("abc", "pw");
-        User user1 = new User("유저1", 1, STUDENT, login);
-        User user2 = new User("유저2", 2, STUDENT, login);
-        User user3 = new User("유저3", 3, STUDENT, login);
+        User user1 = new User("유저1", 1, "abc", "pw");
+        User user2 = new User("유저2", 2, "abc", "pw");
+        User user3 = new User("유저3", 3, ADMIN, "abc", "pw");
 
         group.addUser(user1);
         group.addUser(user2);

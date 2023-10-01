@@ -24,10 +24,9 @@ class UserRepositoryTest {
     @Autowired
     UserRepository userRepository;
 
-    LogInInformation login = new LogInInformation("abc", "pw");
-    User user1 = new User("유저1", 50, STUDENT, login);
-    User user2 = new User("유저2", 30, STUDENT, login);
-    User user3 = new User("유저3", 20, ADMIN, login);
+    User user1 = new User("유저1", 1, "abc", "pw");
+    User user2 = new User("유저2", 2, "abc", "pw");
+    User user3 = new User("유저3", 3, ADMIN, "abc", "pw");
 
     @BeforeEach
     public void each() {

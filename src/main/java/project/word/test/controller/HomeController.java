@@ -117,6 +117,10 @@ public class HomeController {
         } else { // 가입된 유저가 존재하는 경우
             User loggedInUser = loggedInUserFindById.get();
             session.setAttribute("loggedInUser", loggedInUser);  // 로그인한 유저 정보 저장
+
+            if (loggedInUser.getAccountType() == ADMIN) {
+                return "redirect:/admin";
+            }
             return "redirect:/";
         }
     }
@@ -127,5 +131,10 @@ public class HomeController {
         log.info("LOGOUT");
 
         return "redirect:/";
+    }
+
+    @RequestMapping("/admin")
+    public String adminPage() {
+        return "admin/home";
     }
 }
