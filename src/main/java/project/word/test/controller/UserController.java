@@ -16,6 +16,7 @@ import project.word.test.service.GroupService;
 import project.word.test.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -47,7 +48,9 @@ public class UserController {
     @GetMapping("/user/edit")
     public String editUserInfo(HttpSession session, Model model) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
+        List<Group> groups = groupService.findGroups();
         model.addAttribute("user", loggedInUser);
+        model.addAttribute("groups", groups);
         model.addAttribute("form", new UserEditDto());
         log.info("USER EDIT");
 
