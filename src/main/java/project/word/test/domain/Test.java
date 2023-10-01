@@ -1,6 +1,8 @@
 package project.word.test.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,9 +12,12 @@ import java.util.List;
 import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.*;
 import static javax.persistence.FetchType.*;
+import static lombok.AccessLevel.*;
+import static project.word.test.domain.TestStatus.*;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = PROTECTED)
 public class Test {
     @Id
     @GeneratedValue
@@ -21,6 +26,12 @@ public class Test {
     private String name;
     private int score;
     private LocalDateTime registrationTime;
+
+    public Test(String name) {
+        score = 0;
+        testStatus = PRE;
+        registrationTime = LocalDateTime.now();
+    }
 
     @Enumerated(STRING)
     private TestStatus testStatus;

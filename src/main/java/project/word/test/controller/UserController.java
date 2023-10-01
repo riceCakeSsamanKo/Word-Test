@@ -64,12 +64,19 @@ public class UserController {
         Long id = ((User) session.getAttribute("loggedInUser")).getId();
         User user = userService.findUser(id);
         // 기존 유저의 그룹
-        Group group = groupService.findGroup(user.getGroup().getId());  // group이 null인 경우 처리 필요(NullPointerException 발생)
+        Group group = null;
+        try {
+            group = groupService.findGroup(user.getGroup().getId());  // group이 null인 경우 처리 필요(NullPointerException 발생)
+        } catch (NullPointerException e) {
+            log.error("there is no group of this user");
+        }
 
         // dto로 받아온 그룹
         Group newGroup = groupService.findGroup(dto.getGroup_id());
-        // group의 users 리스트에서 user 제거
-        groupService.deleteUser(group, user);
+        if (group != null) {
+            // group의 users 리스트에서 user 제거
+            groupService.deleteUser(group, user);
+        }
         newGroup.addUser(user); //user의 group에 대한 연관관계 변경
 
         // 입력이 된 값만 변경함. 입력되지 않은 값의 경우 기존의 값을 유지함(문자열 비교는 equals 메서드를 이용해야 한다.)

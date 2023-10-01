@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import project.word.test.domain.AccountType;
 import project.word.test.domain.Group;
+import project.word.test.domain.Test;
 import project.word.test.domain.User;
 import project.word.test.service.GroupService;
+import project.word.test.service.TestService;
 import project.word.test.service.UserService;
 
 import javax.annotation.PostConstruct;
@@ -26,6 +28,7 @@ public class InitDb {
         initService.userInit();
         initService.groupInit();
         initService.userGroupJoinInit();
+        initService.testInit();
     }
 
     @Component
@@ -34,6 +37,7 @@ public class InitDb {
 
         private final UserService userService;
         private final GroupService groupService;
+        private final TestService testService;
         void userInit() {
 
             User user1 = new User("user1", 30, "1", "1");
@@ -72,6 +76,13 @@ public class InitDb {
 
             groupService.join(groupA);
             groupService.join(groupB);
+        }
+
+        void testInit() {
+            Test test1 = new Test("Test1");
+            Test test2 = new Test("Test2");
+            testService.join(test1);
+            testService.join(test2);
         }
     }
 }
