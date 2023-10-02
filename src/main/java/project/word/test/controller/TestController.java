@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.word.test.domain.Test;
+import project.word.test.dto.SelectTestDto;
 import project.word.test.service.TestService;
 import project.word.test.service.WordListService;
 import project.word.test.service.WordService;
@@ -27,15 +28,32 @@ public class TestController {
         return "test/total";
     }
 
-    @GetMapping("/test/select")
-    public String selectTest(Model model) {
-        List<Test> tests = testService.findtests();
-        model.addAttribute("selectTest", new String());
-        model.addAttribute("tests", tests);
+    @RequestMapping("/test/select")
+    public String selectTest() {
         return "test/selectTest";
     }
 
-    @GetMapping("/test/select/{name}/korean")
+    @GetMapping("/test/select/korean")
+    public String selectTest(Model model) {
+        List<Test> tests = testService.findtests();
+        for (Test test : tests) {
+            System.out.println("test = " + test.getName());
+        }
+        model.addAttribute("selectTest", new SelectTestDto());
+        model.addAttribute("tests", tests);
+        return "test/selectKoreanTest";
+    }
+
+    @PostMapping("/test/select/korean")
+    public String selectTestPost(SelectTestDto selectTestDto, Model model) {
+        Long testId = selectTestDto.getTestId();
+        Test findtest = testService.findtest(testId);
+        model.addAttribute("test", findtest);
+
+        return "test/koreanTest";
+    }
+
+    /*@GetMapping("/test/select/korean")
     public String koreanTest(@PathVariable String name,Model model) {
         Optional<Test> findtest = testService.findtest(name);
         if (findtest.isEmpty()) {
@@ -45,6 +63,6 @@ public class TestController {
         model.addAttribute("test", test);
 
         return "test/koreanTest";
-    }
+    }*/
 
 }

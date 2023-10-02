@@ -6,13 +6,11 @@
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div class="jumbotron"><h1>Select Test</h1></div>
     <h4>시험 선택</h4>
-
-    ?수정
-    <form th:object="${test}" method="post" id="selectTest">
+    <form th:object="${selectTest}" method="post" id="selectTest">
         <!-- method = get으로 설정되어 있으므로 반환된 데이터가 GetMapping으로 전달됨.-->
         <div class="form-group">
             <label for="selectTest">Test</label>
-            <select class="form-control" id="test" th:field="*{wordList}">
+            <select class="form-control" id="test" th:field="*{testId}">
                 <option th:each="test : ${tests}" th:value="${test.id}" th:text="${test.name}"></option>
             </select>
         </div>

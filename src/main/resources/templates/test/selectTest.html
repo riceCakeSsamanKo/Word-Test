@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header">
     <title>WORD TEST</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,21 +8,16 @@
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div class="jumbotron">
-        <h1>Select Test</h1>
-        <h3><strong>Test</strong></h3>
-        <select class="form-control" id="test" th:field="*{selectTest}">
-            <option th:each="test : ${tests}" th:value="${test.name}" th:text="${test.name}"></option>
-        </select>
-        <div>
-            <p>
-                <a href="/test/select/korean" class="btn btn-primary">단어 뜻 시험보기</a>
-                <a href="/test/select/english" class="btn btn-primary">영단어 시험보기</a>
-            </p>
-        </div>
+        <h1>TEST PAGE</h1>
+        <p>
+            <a class="btn btn-lg btn-secondary" href="/test/select/korean">단어 뜻 시험보기</a>
+        </p>
+        <p>
+            <a class="btn btn-lg btn-info" href="/test/select/english">영단어 시험보기</a>
+        </p>
     </div>
-    <a href="/" class="btn btn-primary" style="float: right;">돌아가기</a>
+    <a href="/test" class="btn btn-primary" style="float: right;">돌아가기</a>
     <div th:replace="fragments/footer :: footer"/>
-</div>
+</div> <!-- /container -->
 </body>
-
 </html>

@@ -28,6 +28,7 @@ public class Test {
     private LocalDateTime registrationTime;
 
     public Test(String name) {
+        this.name = name;
         score = 0;
         testStatus = PRE;
         registrationTime = LocalDateTime.now();
