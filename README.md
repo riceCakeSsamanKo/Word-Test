@@ -10,5 +10,9 @@
 ## E-R 다이어그램 설계
 ![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/fd706eae-f63e-46fc-9f16-db945afd307e)
 
+## 도메인 설계
+(수정후)
+![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/036dafcb-65eb-47c8-a109-8f0a9008907e)
 
+(수정전)
 ![word_test_diagram](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/65ded597-837d-4276-ade0-4561644b21b7)
