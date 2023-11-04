@@ -7,7 +7,7 @@
 
 >3. 단어 배포 : 원하는 단어의 조합으로 시험을 만들고 그 시험을 학생에게 배포한다.
 
-##E-R 다이어그램 설계
+## E-R 다이어그램 설계
 ![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/fd706eae-f63e-46fc-9f16-db945afd307e)
 
 
