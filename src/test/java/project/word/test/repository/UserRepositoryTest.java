@@ -5,14 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import project.word.test.domain.AccountType;
-import project.word.test.domain.LogInInformation;
-import project.word.test.domain.User;
-import project.word.test.service.UserService;
 
 import javax.persistence.EntityManager;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static project.word.test.domain.AccountType.*;
 
 @SpringBootTest
