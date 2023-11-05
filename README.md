@@ -11,11 +11,6 @@
 ![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/fd706eae-f63e-46fc-9f16-db945afd307e)
 
 ## 도메인 설계
-(수정후)
 ![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/0ab96bdc-ab50-425d-a00c-4031951bd269)
 
 
-
-
-(수정전)
-![word_test_diagram](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/65ded597-837d-4276-ade0-4561644b21b7)
