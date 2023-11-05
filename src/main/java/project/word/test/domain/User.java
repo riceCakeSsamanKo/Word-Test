@@ -28,8 +28,11 @@ public class User {
     @Enumerated(STRING)
     private Gender gender;
 
+    @Enumerated(STRING)
+    private AccountType accountType;
     @Embedded
     private LogIn login;
+
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "group_id")
