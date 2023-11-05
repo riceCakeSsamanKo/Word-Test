@@ -17,7 +17,7 @@ import static project.word.test.domain.Pass.*;
 @NoArgsConstructor(access = PROTECTED)
 public class UserTest {
     @Id @GeneratedValue
-    @Column(name = "test_user_id")
+    @Column(name = "user_test_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
@@ -27,6 +27,8 @@ public class UserTest {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "test_id")
     private Test test;
+
+    private int score;
 
     @Enumerated(value = STRING)
     private Pass pass;
@@ -43,5 +45,9 @@ public class UserTest {
     // 비즈니스 로직
     public void changePass(Pass pass) {
         this.pass = pass;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
