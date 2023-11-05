@@ -10,18 +10,41 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Optional.*;
+
 @Repository
 @RequiredArgsConstructor
 public class UserRepository {
     private final EntityManager em;
 
-    // 서비스 계층에서 user 등록하는 로직에 동일한 아이디가지는 user는 등록이 안되도록 구현해야 한다.
+    // 서비스 계층에서 user 등록하는 로직에 동일한 아이디 가지는 user는 등록이 안되도록 구현해야 한다.
     public void save(User user) {
         em.persist(user);
     }
 
-    public User findOne(Long userId) {
-        return em.find(User.class, userId);
+    public Optional<User> findOne(Long userId) {
+        try {
+            User findUser = em.find(User.class, userId);
+            return ofNullable(findUser);
+        } catch (IllegalArgumentException e) {
+            return empty();
+        }
+
+    }
+
+    public Optional<User> findByLogIn(LogIn logIn) {
+        try {
+            User findUser = em.createQuery("select u from User u " +
+                            "join fetch u.group g " +
+                            "where u.login.id = :id " +
+                            "and u.login.pw = :pw", User.class)
+                    .setParameter("id", logIn.getId())
+                    .setParameter("pw", logIn.getPw())
+                    .getSingleResult();
+            return ofNullable(findUser);
+        } catch (IllegalArgumentException e) {
+            return empty();
+        }
     }
 
     public List<User> findAll() {
@@ -44,20 +67,5 @@ public class UserRepository {
                         "where u.accountType = :accountType",User.class)
                 .setParameter("accountType", accountType)
                 .getResultList();
-    }
-
-    public Optional<User> findByLogIn(LogIn logIn) {
-        try {
-            User findUser = em.createQuery("select u from User u " +
-                            "join fetch u.group g " +
-                            "where u.login.id = :id " +
-                            "and u.login.pw = :pw", User.class)
-                    .setParameter("id", logIn.getId())
-                    .setParameter("pw", logIn.getPw())
-                    .getSingleResult();
-            return Optional.ofNullable(findUser);
-        } catch (NullPointerException e) {
-            return Optional.empty();
-        }
     }
 }
