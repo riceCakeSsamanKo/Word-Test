@@ -12,7 +12,8 @@
 
 ## 도메인 설계
 (수정후)
-![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/a290b1df-0201-4262-8b09-a99ad6fb5908)
+![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/b8fe28dd-d475-4277-a022-7f10f5c3ceb2)
+
 
 
 (수정전)
