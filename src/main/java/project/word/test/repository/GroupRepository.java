@@ -3,7 +3,6 @@ package project.word.test.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import project.word.test.domain.Group;
-import project.word.test.domain.Test;
 
 import javax.persistence.EntityManager;
 import java.util.List;
