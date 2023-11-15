@@ -17,7 +17,13 @@ public class WordListRepository {
         em.persist(wordList);
     }
 
-    public Optional<WordList> findOne(Long id) {
-        
+    public Optional<WordList> findOne(Long wordListId) {
+        try {
+            WordList wordList = em.find(WordList.class, wordListId);
+            return Optional.ofNullable(wordList);
+        } catch (IllegalStateException e) {
+            return Optional.empty();
+        }
+
     }
 }
