@@ -9,7 +9,7 @@ import javax.persistence.*;
 import static lombok.AccessLevel.*;
 
 @Entity
-@Getter @Setter
+@Getter
 @Table(name = "GROUPS")
 @NoArgsConstructor(access = PROTECTED)
 public class Group {
@@ -20,6 +20,11 @@ public class Group {
     private String name;
 
     public Group(String name){
+        this.name = name;
+    }
+
+    // 비즈니스 로직
+    public void changeName(String name) {
         this.name = name;
     }
 }

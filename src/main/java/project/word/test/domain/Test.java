@@ -73,7 +73,21 @@ public class Test {
 
     //*연관관계 편의 메서드*//
     public void addWordTest(WordTest wordTest) {
+        if (this.status == AFTER_EXECUTION) {
+            throw new IllegalStateException("error\n" +
+                    "내용: 이미 완료된 시험입니다. 수정이 불가능합니다." +
+                    "발생지점: Test.addWordTest()");
+        }
         wordTests.add(wordTest);
         wordTest.setTest(this);
+    }
+
+    public void deleteWordTest(WordTest wordTest) {
+        if (this.status == AFTER_EXECUTION) {
+            throw new IllegalStateException("error\n" +
+                    "내용: 이미 완료된 시험입니다. 수정이 불가능합니다." +
+                    "발생지점: Test.addWordTest()");
+        }
+        wordTests.remove(wordTest);
     }
 }

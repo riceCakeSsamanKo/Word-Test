@@ -36,6 +36,11 @@ public class TestRepository {
         return findTest.stream().findAny();
     }
 
+    public List<Test> findAll() {
+        return em.createQuery("select t from Test t ", Test.class)
+                .getResultList();
+    }
+
     public List<Test> findByStatus(TestStatus status) {
         return em.createQuery("select t from Test t " +
                         "where t.status = :status", Test.class)
@@ -47,11 +52,6 @@ public class TestRepository {
         return em.createQuery("select t from Test t " +
                         "where t.difficulty = :difficulty", Test.class)
                 .setParameter("difficulty", difficulty)
-                .getResultList();
-    }
-
-    public List<Test> findAll() {
-        return em.createQuery("select t from Test t ", Test.class)
                 .getResultList();
     }
 }
