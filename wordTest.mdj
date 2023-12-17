@@ -1056,23 +1056,6 @@
 										},
 										{
 											"_type": "UMLSlotView",
-											"_id": "AAAAAAGMdYXQsRLCIvs=",
-											"_parent": {
-												"$ref": "AAAAAAGLmuOzwKis2oc="
-											},
-											"model": {
-												"$ref": "AAAAAAGMdYXQpRK/L5E="
-											},
-											"font": "Arial;13;0",
-											"left": 949,
-											"top": 493,
-											"width": 198,
-											"height": 13,
-											"text": "+String name",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLSlotView",
 											"_id": "AAAAAAGLmuPyo6jIICw=",
 											"_parent": {
 												"$ref": "AAAAAAGLmuOzwKis2oc="
@@ -1082,7 +1065,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 949,
-											"top": 508,
+											"top": 493,
 											"width": 198,
 											"height": 13,
 											"text": "+Test test",
@@ -1099,7 +1082,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 949,
-											"top": 523,
+											"top": 508,
 											"width": 198,
 											"height": 13,
 											"text": "+WordList wordList",
@@ -1110,7 +1093,7 @@
 									"left": 944,
 									"top": 473,
 									"width": 208,
-									"height": 68
+									"height": 53
 								}
 							],
 							"font": "Arial;13;0",
@@ -5956,6 +5939,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
+							"fontColor": "#ff0000",
 							"font": "Arial;20;0",
 							"left": 344,
 							"top": 1538,
@@ -6119,6 +6103,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
+							"fontColor": "#0000ff",
 							"font": "Arial;20;0",
 							"left": 344,
 							"top": 1488,
@@ -6356,6 +6341,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
+							"fontColor": "#ff0000",
 							"font": "Arial;20;0",
 							"left": 1239,
 							"top": 1694,
@@ -6519,9 +6505,10 @@
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
 							},
+							"fontColor": "#952bff",
 							"font": "Arial;20;0",
 							"left": 1239,
-							"top": 1644,
+							"top": 1648,
 							"width": 105.224609375,
 							"height": 32,
 							"text": "WordTest3"
@@ -6565,206 +6552,6 @@
 							"text": "Test2"
 						},
 						{
-							"_type": "RectangleView",
-							"_id": "AAAAAAGMd0SXPphuSlw=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 463,
-							"top": 1627,
-							"width": 344,
-							"height": 328
-						},
-						{
-							"_type": "RectangleView",
-							"_id": "AAAAAAGMd0SXPphvo20=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 485,
-							"top": 1677,
-							"width": 296,
-							"height": 256
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXPphwXEc=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;20;0",
-							"left": 583,
-							"top": 1688,
-							"width": 100.458984375,
-							"height": 32,
-							"text": "WordList2"
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGMd0SXPphxg3E=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 509,
-							"top": 1725,
-							"width": 113,
-							"height": 42
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5hyvfw=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 541,
-							"top": 1733,
-							"width": 60,
-							"height": 25,
-							"text": "Word7"
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGMd0SXP5hzOkI=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 645,
-							"top": 1727,
-							"width": 113,
-							"height": 41
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5h0hPA=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 677,
-							"top": 1735,
-							"width": 60,
-							"height": 25,
-							"text": "Word8"
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGMd0SXP5h14Yc=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 509,
-							"top": 1791,
-							"width": 113,
-							"height": 41
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5h2/UY=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 541,
-							"top": 1799,
-							"width": 60,
-							"height": 25,
-							"text": "Word9"
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGMd0SXP5h3G9Q=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 645,
-							"top": 1791,
-							"width": 113,
-							"height": 41
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5h44bU=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 677,
-							"top": 1799,
-							"width": 60,
-							"height": 25,
-							"text": "Word10"
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGMd0SXP5h50yA=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 509,
-							"top": 1853,
-							"width": 113,
-							"height": 41
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5h6BBE=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 541,
-							"top": 1861,
-							"width": 60,
-							"height": 25,
-							"text": "Word11"
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGMd0SXP5h7bYo=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 645,
-							"top": 1855,
-							"width": 113,
-							"height": 41
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5h8Ijw=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 677,
-							"top": 1863,
-							"width": 60,
-							"height": 25,
-							"text": "Word12"
-						},
-						{
-							"_type": "UMLTextView",
-							"_id": "AAAAAAGMd0SXP5h9QYQ=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;20;0",
-							"left": 583,
-							"top": 1635,
-							"width": 105.224609375,
-							"height": 32,
-							"text": "WordTest2"
-						},
-						{
 							"_type": "UMLTextBoxView",
 							"_id": "AAAAAAGMd1ENKzeW0Pc=",
 							"_parent": {
@@ -6775,7 +6562,7 @@
 							"top": 2024,
 							"width": 409,
 							"height": 153,
-							"text": "1.하나의 Test에는 여러개의 WordTest가 존재할 수 있다.\n\n2.하나의 WordTest에는 하나의 WordList만이 속할 수 있다.\n\n3.하나의 WordList는 여러 WordTest에 속할 수 있다. \n즉, WordTest는 WordList를 재사용할 수 있다.\n\n4.하나의 WordList에는 여러 Word들이 속할 수 있지만, \n하나의 Word는 두 개 이상의 WordList에 속할 수 없다."
+							"text": "1.하나의 Test에는 여러개의 WordTest가 존재할 수 있다.\n\n2.WordTest는 하나의 Test에만 속할 수 있다.\n\n3.하나의 WordTest에는 하나의 WordList만이 속할 수 있다.\n\n4.하나의 WordList는 여러 WordTest에 속할 수 있다. \n즉, WordTest는 WordList를 재사용할 수 있다.\n\n5.하나의 WordList에는 여러 Word들이 속할 수 있지만, \n하나의 Word는 두 개 이상의 WordList에 속할 수 없다."
 						}
 					]
 				},
@@ -7262,15 +7049,6 @@
 							},
 							"name": "Long id",
 							"visibility": "private",
-							"type": ""
-						},
-						{
-							"_type": "UMLSlot",
-							"_id": "AAAAAAGMdYXQpRK/L5E=",
-							"_parent": {
-								"$ref": "AAAAAAGLmuOzwKikn8Y="
-							},
-							"name": "String name",
 							"type": ""
 						},
 						{
