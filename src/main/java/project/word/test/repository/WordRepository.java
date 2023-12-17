@@ -37,11 +37,13 @@ public class WordRepository {
                 .getResultList();
     }
 
-    public List<Word> findByEnglish(String english) {
-        return em.createQuery("select w from Word w " +
+    public Optional<Word> findByEnglish(String english) {
+        List<Word> findEnglish = em.createQuery("select w from Word w " +
                         "join fetch w.wordList wl " +
                         "where w.korean = :english", Word.class)
                 .setParameter("english", english)
                 .getResultList();
+
+        return findEnglish.stream().findAny();
     }
 }

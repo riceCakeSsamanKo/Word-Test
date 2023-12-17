@@ -19,10 +19,19 @@ public class WordList {
     @Column(name = "word_list_id")
     private Long id;
 
+    String name;
     private int numOfWords = 0;
 
     @OneToMany(mappedBy = "wordList", cascade = CascadeType.ALL)
     private List<Word> words = new ArrayList<>();
+
+    public WordList(String name) {
+        this.name = name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     //*연관 관계 편의 메서드*//
     public void addWord(Word word) {
