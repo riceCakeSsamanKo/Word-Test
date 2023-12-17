@@ -18,6 +18,7 @@ public class WordTest {
     @GeneratedValue
     @Column(name = "word_test_id")
     private Long id;
+    String name;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "test_id")
@@ -27,8 +28,9 @@ public class WordTest {
     @JoinColumn(name = "word_list_id")
     private WordList wordList;
 
-    public static WordTest createWordTest(Test test, WordList wordList) {
+    public static WordTest createWordTest(String name, Test test, WordList wordList) {
         WordTest wordTest = new WordTest();
+        wordTest.name = name;
         test.addWordTest(wordTest);
         wordTest.wordList = wordList;
         return wordTest;

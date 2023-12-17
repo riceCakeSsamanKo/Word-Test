@@ -23,12 +23,17 @@ public class GroupRepository {
     public Group findOne(Long groupId) {
             return em.find(Group.class, groupId);
     }
-    // 동일한 이름의 그룹은 한개만 존재
+
     public Optional<Group> findByName(String name) {
         List<Group> findGroup = em.createQuery("select g from Group g " +
                         "where g.name =: name", Group.class)
                 .setParameter("name", name)
                 .getResultList();
         return findGroup.stream().findAny();
+    }
+
+    public List<Group> findAll() {
+        return em.createQuery("select g from Group g", Group.class)
+                .getResultList();
     }
 }

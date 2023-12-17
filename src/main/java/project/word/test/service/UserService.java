@@ -21,7 +21,7 @@ public class UserService {
         if (findUser.isPresent()) {
             throw new IllegalStateException("error\n" +
                     "내용: 이미 가입된 아이디입니다\n" +
-                    "발생지점:UserService.join()");
+                    "발생지점: UserService.join()");
         }
         userRepository.save(user);
     }
@@ -30,7 +30,7 @@ public class UserService {
         return userRepository.findOne(userId);
     }
 
-    public Optional<User> findUserBuLogin(LogIn login) {
+    public Optional<User> findUserByLogin(LogIn login) {
         return userRepository.findByLogIn(login);
     }
 

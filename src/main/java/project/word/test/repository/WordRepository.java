@@ -25,13 +25,13 @@ public class WordRepository {
 
     public List<Word> findAll() {
         return em.createQuery("select w from Word w " +
-                        "join fetch w.wordList wl ", Word.class)
+                        "left join fetch w.wordList wl ", Word.class)
                 .getResultList();
     }
 
     public List<Word> findByKorean(String korean) {
         return em.createQuery("select w from Word w " +
-                        "join fetch w.wordList wl " +
+                        "left join fetch w.wordList wl " +
                         "where w.korean = :korean", Word.class)
                 .setParameter("korean", korean)
                 .getResultList();
@@ -39,8 +39,8 @@ public class WordRepository {
 
     public Optional<Word> findByEnglish(String english) {
         List<Word> findEnglish = em.createQuery("select w from Word w " +
-                        "join fetch w.wordList wl " +
-                        "where w.korean = :english", Word.class)
+                        "left join fetch w.wordList wl " +
+                        "where w.english = :english", Word.class)
                 .setParameter("english", english)
                 .getResultList();
 
