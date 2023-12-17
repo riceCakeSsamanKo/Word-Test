@@ -22,13 +22,8 @@ public class TestRepository {
     public void save(Test test) {
         em.persist(test);
     }
-    public Optional<Test> findOne(Long testId) {
-        try {
-            Test findTest = em.find(Test.class, testId);
-            return ofNullable(findTest);
-        } catch (IllegalArgumentException e) {
-            return empty();
-        }
+    public Test findOne(Long testId) {
+        return em.find(Test.class, testId);
     }
 
     public List<Test> findByName(String name) {

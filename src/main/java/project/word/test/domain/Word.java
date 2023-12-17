@@ -19,8 +19,8 @@ public class Word {
     @Column(name = "word_id")
     private Long id;
 
-    private String korean;
     private String english;
+    private String korean;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "word_list_id")

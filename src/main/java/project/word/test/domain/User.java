@@ -34,12 +34,22 @@ public class User {
     private LogIn login;
 
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY,cascade = PERSIST)
     @JoinColumn(name = "group_id")
     private Group group;
 
     @OneToMany(mappedBy = "user", cascade = PERSIST)
     private List<UserTest> userTests = new ArrayList<>();
+
+    public User(String name, int age, Gender gender, LogIn login, UserTest... userTests) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.login = login;
+        for (UserTest userTest : userTests) {
+            addUserTest(userTest);
+        }
+    }
 
     public User(String name, int age, Gender gender, LogIn login, Group group, UserTest... userTests) {
         this.name = name;

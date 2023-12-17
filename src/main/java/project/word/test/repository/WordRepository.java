@@ -19,13 +19,8 @@ public class WordRepository {
         em.persist(word);
     }
 
-    public Optional<Word> findOne(Long wordId) {
-        try {
-            Word findWord = em.find(Word.class, wordId);
-            return ofNullable(findWord);
-        } catch (IllegalArgumentException e) {
-            return empty();
-        }
+    public Word findOne(Long wordId) {
+        return em.find(Word.class, wordId);
     }
 
     public List<Word> findAll() {

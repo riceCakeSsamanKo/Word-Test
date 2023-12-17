@@ -20,6 +20,11 @@ public class UserTest {
     @Column(name = "user_test_id")
     private Long id;
 
+    private int score;
+
+    @Enumerated(value = STRING)
+    private Pass pass;
+
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -28,10 +33,6 @@ public class UserTest {
     @JoinColumn(name = "test_id")
     private Test test;
 
-    private int score;
-
-    @Enumerated(value = STRING)
-    private Pass pass;
 
     // 생성 메서드
     public static UserTest createUserTest(User user, Test test) {

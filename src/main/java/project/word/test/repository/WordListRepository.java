@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import project.word.test.domain.WordList;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.Optional;
 
 
@@ -17,7 +18,7 @@ public class WordListRepository {
         em.persist(wordList);
     }
 
-    public Optional<WordList> findOne(Long id) {
-        
+    public WordList findOne(Long wordListId) {
+        return em.find(WordList.class, wordListId);
     }
 }

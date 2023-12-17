@@ -20,13 +20,8 @@ public class GroupRepository {
         em.persist(group);
     }
 
-    public Optional<Group> findOne(Long groupId) {
-        try {
-            Group findGroup = em.find(Group.class, groupId);
-            return ofNullable(findGroup);
-        } catch (IllegalArgumentException e) {
-            return empty();
-        }
+    public Group findOne(Long groupId) {
+            return em.find(Group.class, groupId);
     }
 
     public List<Group> findByName(String name) {
