@@ -11,7 +11,7 @@
 ![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/fd706eae-f63e-46fc-9f16-db945afd307e)
 
 ## 도메인 설계
-![스크린샷 2023-12-17 105752](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/17169106-9e00-421b-a8f8-d8144f0bae31)
+![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/97a7ba9a-5e2c-4f44-bc43-0b0b8a2e8fc2)
 
 
 
