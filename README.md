@@ -11,8 +11,10 @@
 ![image](https://github.com/riceCakeSsamanKo/word-test/assets/121627245/fd706eae-f63e-46fc-9f16-db945afd307e)
 
 ## 도메인 설계
-![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/f089de65-05c4-42d9-9202-6b2b60cf8aa8)
+![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/f13f76f8-14eb-46bf-b378-312fbf2b1ce6)
 
+## Test 구조도
+![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/98f58be4-a0ac-4af4-8ba0-6c59579f232c)
 
 
 
