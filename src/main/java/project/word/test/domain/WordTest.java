@@ -18,7 +18,6 @@ public class WordTest {
     @GeneratedValue
     @Column(name = "word_test_id")
     private Long id;
-    String name;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "test_id")
