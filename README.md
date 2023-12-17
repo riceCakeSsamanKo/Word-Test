@@ -14,7 +14,8 @@
 ![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/f13f76f8-14eb-46bf-b378-312fbf2b1ce6)
 
 ## Test 구조도
-![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/1a82def9-3e5b-436a-b808-2f7c1f359f85)
+![image](https://github.com/riceCakeSsamanKo/Word-Test/assets/121627245/7f391617-5b36-4224-8300-7944a0270f40)
+
 
 
 
