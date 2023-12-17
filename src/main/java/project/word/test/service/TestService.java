@@ -90,4 +90,9 @@ public class TestService {
         Test test = testRepository.findOne(testId);
         test.addWordTest(wordTest);
     }
+
+    public void deleteWordTest(Long testId, WordTest wordTest) {
+        Test test = testRepository.findOne(testId);
+        test.deleteWordTest(wordTest);
+    }
 }

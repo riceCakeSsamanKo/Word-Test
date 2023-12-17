@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Null;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,5 +90,6 @@ public class Test {
                     "발생지점: Test.addWordTest()");
         }
         wordTests.remove(wordTest);
+        wordTest.setTest(null);
     }
 }
