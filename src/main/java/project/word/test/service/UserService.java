@@ -41,6 +41,17 @@ public class UserService {
         return userFindByName.get();
     }
 
+    public User findUser(String id, String pw) {
+        Optional<User> userFindByName = userRepository.findByLogIn(id, pw);
+        if (userFindByName.isEmpty()) {
+            throw new IllegalStateException("error\n" +
+                    "내용: 존재하지 않는 아이디입니다.\n" +
+                    "발생지점: UserService.findUser(String id, String pw)");
+        }
+
+        return userFindByName.get();
+    }
+
     public List<User> findUsers() {
         return userRepository.findAll();
     }

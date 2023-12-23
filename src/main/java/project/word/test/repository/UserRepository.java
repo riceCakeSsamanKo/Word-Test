@@ -38,6 +38,17 @@ public class UserRepository {
         return findUser.stream().findAny();
     }
 
+    public Optional<User> findByLogIn(String logIn_id, String logIn_pw) {
+        List<User> findUser = em.createQuery("select u from User u " +
+                        "join fetch u.group g " +
+                        "where u.login.id = :id " +
+                        "and u.login.pw = :pw", User.class)
+                .setParameter("id", logIn_id)
+                .setParameter("pw", logIn_pw)
+                .getResultList();
+        return findUser.stream().findAny();
+    }
+
     public Optional<User> findByLogInId(LogIn logIn) {
         List<User> findUser = em.createQuery("select u from User u " +
                         "left join fetch u.group g " +
