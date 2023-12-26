@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <p><strong th:text="'아이디: '"></strong> <span th:text="${user.login.id}"></span></p>
+    <p><strong th:text="'비밀번호: '"></strong> <span th:text="${user.login.pw}"></span></p>
+    <p><strong th:text="'이름: '"></strong> <span th:text="${user.name}"></span></p>
+    <p><strong th:text="'나이: '"></strong> <span th:text="${user.age}"></span></p>
+    <p><strong th:text="'성별: '"></strong>
+        <span th:if="${user.gender.toString().equals('MALE')}">남성</span>
+        <span th:if="${user.gender.toString().equals('FEMALE')}">여성</span>
+    </p>
+    <p><strong th:text="'계정: '"></strong>
+        <span th:if="${user.accountType.toString().equals('USER')}">일반회원</span>
+        <span th:if="${user.gender.toString().equals('ADMIN')}">운영자</span>
+    </p>
+    <p><strong th:text="'소속그룹: '"></strong>
+        <span th:if="${user.group == null}">소속그룹 없음</span>
+        <span th:unless="${user.group == null}" th:text="${user.group.name}"></span>
+    </p>
+
+    <a href="/user/information/edit" class="btn btn-secondary" style="float: left;">개인정보 수정하기</a>
+    <br>
+    <a href="/user" class="btn btn-primary" style="float: right;">돌아가기</a>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+<script>
+    function validateForm() {
+        // Validation logic
+        // ...
+        return true;
+    }
+</script>
+</body>
+</html>

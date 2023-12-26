@@ -40,6 +40,7 @@ public class InitDB {
             User user2 = new User("user2", 30, FEMALE, new LogIn("2", "2"), USER);
             User user3 = new User("admin", 24, MALE, new LogIn("3", "3"), ADMIN);
 
+            user1.setGroup(new Group("엄"));
             userService.join(user1);
             userService.join(user2);
             userService.join(user3);

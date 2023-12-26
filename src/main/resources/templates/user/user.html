@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Word Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="jumbotron">
+        <h1>회원 페이지</h1>
+        <a class="btn btn-lg btn-info" href="/user/information">회원 정보</a>
+        <a class="btn btn-lg btn-info" href="/user/group">그룹 설정</a>
+        <a class="btn btn-lg btn-info" href="/user/test">시험 정보 조회</a>
+    </div>
+    <a href="/" class="btn btn-primary" style="float: right;">돌아가기</a>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

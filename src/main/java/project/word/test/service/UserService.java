@@ -51,6 +51,7 @@ public class UserService {
 
         return userFindByLogIn_id.get();
     }
+
     public User findUser(String id, String pw) {
         Optional<User> userFindByName = userRepository.findByLogIn(id, pw);
         if (userFindByName.isEmpty()) {
@@ -79,14 +80,14 @@ public class UserService {
      * 유저 정보 업데이트
      */
     @Transactional(readOnly = false)
-    public void updateUserInfo(Long userId, String name, int age, Gender gender) {
+    public void updateUserInfo(Long userId, String pw, String name, int age, Gender gender, Group group) {
         User findUser = userRepository.findOne(userId);
         if (findUser == null) {
             throw new IllegalStateException("error\n" +
                     "내용: 존재하지 않는 유저입니다.\n" +
                     "발생지점: UserService.updateUserInfo()");
         }
-        findUser.changeInfo(name, age, gender);
+        findUser.changeInfo(pw, name, age, gender, group);
     }
 
     @Transactional(readOnly = false)

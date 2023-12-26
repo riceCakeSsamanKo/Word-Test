@@ -79,10 +79,22 @@ public class User {
     }
 
     // 비즈니스 로직
-    public void changeInfo(String name, int age, Gender gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+    public void changeInfo(String pw, String name, Integer age, Gender gender, Group group) {
+        if (pw != null) {
+            this.login.changePassword(pw);
+        }
+        if (name != null) {
+            this.name = name;
+        }
+        if (age != null) {
+            this.age = age;
+        }
+        if (gender != null) {
+            this.gender = gender;
+        }
+        if (group != null) {
+            changeGroup(group);
+        }
     }
 
     public void changePassword(String pw) {

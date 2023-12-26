@@ -20,11 +20,22 @@ class GroupServiceTest {
         //given
         Group group1 = new Group("group");
         Group group2 = new Group("group");
+        Group group3 = new Group("group");
 
         //when
         groupService.join(group1);
 
         //then
         Assertions.assertThrows(IllegalStateException.class, ()->groupService.join(group2));
+
+        try {
+            groupService.join(group3);
+        } catch (IllegalStateException e) {
+            String message = e.getMessage();
+            System.out.println(message);
+
+            // try
+            e.printStackTrace();
+        }
     }
 }
