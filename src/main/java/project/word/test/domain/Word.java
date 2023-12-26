@@ -26,14 +26,14 @@ public class Word {
     @JoinColumn(name = "word_list_id")
     private WordList wordList;
 
-    public Word(String korean, String english) {
-        this.korean = korean;
+    public Word(String english, String korean) {
         this.english = english;
+        this.korean = korean;
     }
 
-    public void changeInfo(String korean, String english) {
-        this.korean = korean;
+    public void changeInfo(String english, String korean) {
         this.english = english;
+        this.korean = korean;
     }
 
     protected void setWordList(WordList wordList) {

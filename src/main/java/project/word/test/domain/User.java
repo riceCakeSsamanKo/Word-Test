@@ -2,6 +2,8 @@ package project.word.test.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.yaml.snakeyaml.extensions.compactnotation.PackageCompactConstructor;
 
 import javax.persistence.*;
 
@@ -12,6 +14,9 @@ import static javax.persistence.CascadeType.*;
 import static javax.persistence.EnumType.*;
 import static javax.persistence.FetchType.*;
 import static lombok.AccessLevel.*;
+import static project.word.test.domain.AccountType.ADMIN;
+import static project.word.test.domain.AccountType.USER;
+import static project.word.test.domain.Gender.MALE;
 
 @Entity
 @Getter
@@ -28,38 +33,49 @@ public class User {
     @Enumerated(STRING)
     private Gender gender;
 
+    @Setter
     @Enumerated(STRING)
     private AccountType accountType;
+
     @Embedded
     private LogIn login;
 
-
-    @ManyToOne(fetch = LAZY,cascade = PERSIST)
+    @Setter
+    @ManyToOne(fetch = LAZY, cascade = PERSIST)
     @JoinColumn(name = "group_id")
     private Group group;
 
     @OneToMany(mappedBy = "user", cascade = PERSIST)
     private List<UserTest> userTests = new ArrayList<>();
 
-    public User(String name, int age, Gender gender, LogIn login, UserTest... userTests) {
+    public User(String name, int age, Gender gender, LogIn login, AccountType accountType) {
+
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.login = login;
-        for (UserTest userTest : userTests) {
-            addUserTest(userTest);
-        }
+        this.accountType = accountType;
     }
 
-    public User(String name, int age, Gender gender, LogIn login, Group group, UserTest... userTests) {
+    public User(String name, int age, Gender gender, String logIn_id, String logIn_pw, AccountType accountType) {
+
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.login = new LogIn(logIn_id, logIn_pw);
+        if (accountType == null) {
+            accountType = USER;
+        }
+        this.accountType = accountType;
+    }
+
+    public User(String name, int age, Gender gender, LogIn login, Group group, AccountType accountType) {
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.login = login;
         this.group = group;
-        for (UserTest userTest : userTests) {
-            addUserTest(userTest);
-        }
+        this.accountType = accountType;
     }
 
     // 비즈니스 로직
@@ -68,10 +84,12 @@ public class User {
         this.age = age;
         this.gender = gender;
     }
+
     public void changePassword(String pw) {
         String id = this.login.getId();
         this.login = new LogIn(id, pw);
     }
+
     public void changeGroup(Group group) {
         this.group = group;
     }

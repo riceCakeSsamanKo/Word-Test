@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static project.word.test.domain.AccountType.USER;
 import static project.word.test.domain.Gender.*;
 
 @SpringBootTest
@@ -36,13 +37,13 @@ class UserServiceTest {
         LogIn logIn = new LogIn("123", "123");
         Group group = new Group("group");
 
-        User user1 = new User("user1", 10, MALE, logIn, group);
+        User user1 = new User("user1", 10, MALE, logIn, group,USER);
 
         //when
         userService.join(user1);
 
         //then
-        User user2 = new User("user2", 10, MALE, logIn, group);
+        User user2 = new User("user2", 10, MALE, logIn, group,USER);
         assertThrows(IllegalStateException.class, ()->userService.join(user2));
     }
 }

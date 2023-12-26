@@ -26,10 +26,18 @@ public class UserRepository {
     public User findOne(Long userId) {
         return em.find(User.class, userId);
     }
+    public Optional<User> findByLogIn(String logIn_id) {
+        List<User> findUser = em.createQuery("select u from User u " +
+                        "left join fetch u.group g " +
+                        "where u.login.id = :id ", User.class)
+                .setParameter("id", logIn_id)
+                .getResultList();
+        return findUser.stream().findAny();
+    }
 
     public Optional<User> findByLogIn(LogIn logIn) {
         List<User> findUser = em.createQuery("select u from User u " +
-                        "join fetch u.group g " +
+                        "left join fetch u.group g " +
                         "where u.login.id = :id " +
                         "and u.login.pw = :pw", User.class)
                 .setParameter("id", logIn.getId())
@@ -40,7 +48,7 @@ public class UserRepository {
 
     public Optional<User> findByLogIn(String logIn_id, String logIn_pw) {
         List<User> findUser = em.createQuery("select u from User u " +
-                        "join fetch u.group g " +
+                        "left join fetch u.group g " +
                         "where u.login.id = :id " +
                         "and u.login.pw = :pw", User.class)
                 .setParameter("id", logIn_id)

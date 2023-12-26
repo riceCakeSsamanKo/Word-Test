@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import project.word.test.domain.Gender;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -13,15 +12,12 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserForm {
-    @NotNull @NotEmpty
+public class loginDto {
+    @NotNull
+    @NotEmpty
     String login_id;
-    @NotNull @NotEmpty
+
+    @NotNull
+    @NotEmpty
     String login_pw;
-    @NotNull @NotEmpty
-    String name;
-    int age;
-    Gender gender;
-
 }
-
